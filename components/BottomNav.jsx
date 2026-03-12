@@ -1,6 +1,6 @@
 const items = [
   { id: 'home', href: '/', icon: '🏠' },
-  { id: 'plus', href: '#', icon: '+' },
+  { id: 'plus', href: '#', icon: '＋' },
   { id: 'chat', href: '#', icon: '💬' },
   { id: 'flai', href: '/flai', icon: '⚡' },
 ];
@@ -9,26 +9,26 @@ export default function BottomNav({ active }) {
   return (
     <nav
       style={{
-        position: 'fixed',
+        position: 'absolute',
         left: 0,
         right: 0,
-        bottom: 0,
-        paddingBottom: 16,
+        bottom: 12,
         display: 'flex',
         justifyContent: 'center',
+        pointerEvents: 'none',
       }}
     >
       <div
         style={{
-          maxWidth: 420,
-          width: '100%',
-          margin: '0 auto',
+          width: '90%',
+          maxWidth: 360,
           background: '#ffffff',
-          borderRadius: 24,
-          boxShadow: '0 4px 10px rgba(15,23,42,0.18)',
+          borderRadius: 999,
+          boxShadow: '0 6px 18px rgba(15,23,42,0.25)',
           display: 'flex',
           justifyContent: 'space-around',
           padding: 8,
+          pointerEvents: 'auto',
         }}
       >
         {items.map((item) => (
@@ -42,10 +42,11 @@ export default function BottomNav({ active }) {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: 18,
+              fontSize: 20,
               textDecoration: 'none',
               background: active === item.id ? '#0f172a' : 'transparent',
               color: active === item.id ? '#ffffff' : '#64748b',
+              transition: 'background 0.15s ease',
             }}
           >
             {item.icon}
