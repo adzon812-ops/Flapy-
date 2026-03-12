@@ -5,10 +5,8 @@ export default function FlaiPage() {
   return (
     <main
       style={{
-        minHeight: '100vh',
-        maxWidth: 420,
-        margin: '0 auto',
-        background: '#ffffff',
+        minHeight: '100%',
+        background: '#f8fafc',
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
@@ -19,7 +17,7 @@ export default function FlaiPage() {
       <section
         style={{
           flex: 1,
-          padding: '12px 16px 96px 16px',
+          padding: '8px 16px 96px 16px',
           display: 'flex',
           flexDirection: 'column',
           gap: 8,
@@ -78,6 +76,7 @@ export default function FlaiPage() {
         style={{
           borderTop: '1px solid #e2e8f0',
           padding: '8px 16px',
+          background: '#f8fafc',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
