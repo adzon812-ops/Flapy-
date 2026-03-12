@@ -27,17 +27,15 @@ export default function Page() {
   return (
     <main
       style={{
-        minHeight: '100vh',
-        maxWidth: 420,
-        margin: '0 auto',
-        background: '#ffffff',
+        minHeight: '100%',
+        background: '#f8fafc',
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
       }}
     >
       <Header />
-      <section style={{ padding: '12px 16px 0 16px' }}>
+      <section style={{ padding: '8px 16px 0 16px' }}>
         <Tabs />
         <Filters />
       </section>
