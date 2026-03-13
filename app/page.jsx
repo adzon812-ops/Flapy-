@@ -25,25 +25,49 @@ const mockListings = [
 
 export default function Page() {
   return (
-    <main
+    <div
       style={{
+        position: 'relative',
+        width: '100%',
+        height: '100%',
         minHeight: '100%',
         background: '#f8fafc',
-        display: 'flex',
-        flexDirection: 'column',
-        position: 'relative',
+        overflow: 'hidden',
       }}
     >
-      <Header />
-      <section style={{ padding: '8px 16px 0 16px' }}>
-        <Tabs />
-        <Filters />
-      </section>
+      {/* Верх (хедер + вкладки + фильтры), закреплён */}
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          padding: '8px 16px 8px 16px',
+          background:
+            'linear-gradient(to bottom, rgba(248,250,252,1), rgba(248,250,252,0.9))',
+          backdropFilter: 'blur(10px)',
+          zIndex: 10,
+        }}
+      >
+        <Header />
+        <div style={{ marginTop: 8 }}>
+          <Tabs />
+        </div>
+        <div style={{ marginTop: 8 }}>
+          <Filters />
+        </div>
+      </div>
+
+      {/* Скроллящаяся середина с карточками */}
       <section
         style={{
-          flex: 1,
+          position: 'absolute',
+          top: 150,      // примерная высота блока выше, можно потом подогнать
+          bottom: 80,    // место под нижнюю навигацию
+          left: 0,
+          right: 0,
           overflowY: 'auto',
-          padding: '0 16px 96px 16px',
+          padding: '0 16px 16px 16px',
           display: 'flex',
           flexDirection: 'column',
           gap: 12,
@@ -53,7 +77,9 @@ export default function Page() {
           <ListingCard key={l.id} listing={l} />
         ))}
       </section>
+
+      {/* Нижняя панель навигации, закреплена */}
       <BottomNav active="home" />
-    </main>
+    </div>
   );
 }
