@@ -18,19 +18,21 @@ export default function RootLayout({ children }) {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          padding: '16px 8px',
         }}
       >
         <div
           style={{
             width: '100%',
             maxWidth: 430,
-            height: 844,
-            maxHeight: '100vh',
+            minHeight: '640px',
             background: '#ffffff',
             borderRadius: 32,
             boxShadow: '0 18px 40px rgba(15,23,42,0.22)',
             overflow: 'hidden',
             position: 'relative',
+            display: 'flex',
+            flexDirection: 'column',
           }}
         >
           {children}
