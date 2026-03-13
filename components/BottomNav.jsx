@@ -87,7 +87,7 @@ export default function BottomNav({ active }) {
               }}
             >
               {item.id === 'home' && <IconHome active={isActive} />}
-              {/* позже сюда добавим остальные иконки */}
+              {/* позже добавим IconPlus, IconChat, IconFlai */}
             </a>
           );
         })}
