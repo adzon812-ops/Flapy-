@@ -85,20 +85,9 @@ export default function BottomNav({ active }) {
                   'background-color 220ms ease-out, transform 180ms ease-out',
                 transform: isActive ? 'scale(1.06)' : 'scale(1)',
               }}
-              onMouseDown={(e) => {
-                e.currentTarget.style.transform = 'scale(0.95)';
-              }}
-              onMouseUp={(e) => {
-                e.currentTarget.style.transform = 'scale(1.06)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = isActive
-                  ? 'scale(1.06)'
-                  : 'scale(1)';
-              }}
             >
               {item.id === 'home' && <IconHome active={isActive} />}
-              {/* сюда потом добавим IconPlus, IconChat, IconFlai */}
+              {/* позже сюда добавим остальные иконки */}
             </a>
           );
         })}
