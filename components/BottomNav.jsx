@@ -1,124 +1,42 @@
 const items = [
-  { id: 'home', href: '/', label: 'Дом' },
-  { id: 'plus', href: '#', label: 'Добавить' },
-  { id: 'chat', href: '#', label: 'Чат' },
-  { id: 'flai', href: '/flai', label: 'Flai' },
+  { id: 'home', label: 'Дом', href: '/' },
+  { id: 'plus', label: 'Добавить', href: '#' },
+  { id: 'chat', label: 'Чат', href: '#' },
+  { id: 'flai', label: 'Flai', href: '/flai' },
 ];
 
-function Icon({ id, active }) {
-  const common = {
-    width: 22,
-    height: 22,
-    borderRadius: '999px',
-    border: '2px solid',
-  };
-
-  const color = active ? '#ffffff' : '#64748b';
+function IconHome({ active }) {
   const borderColor = active ? '#ffffff' : '#cbd5e1';
-
-  if (id === 'home') {
-    // домик
-    return (
-      <div style={{ position: 'relative', width: 24, height: 24 }}>
-        <div
-          style={{
-            position: 'absolute',
-            left: 2,
-            right: 2,
-            bottom: 3,
-            height: 10,
-            borderRadius: 4,
-            border: `2px solid ${borderColor}`,
-            borderTop: 'none',
-          }}
-        />
-        <div
-          style={{
-            position: 'absolute',
-            left: 4,
-            right: 4,
-            bottom: 11,
-            height: 0,
-            borderLeft: `2px solid transparent`,
-            borderRight: `2px solid transparent`,
-            borderBottom: `10px solid ${borderColor}`,
-          }}
-        />
-      </div>
-    );
-  }
-
-  if (id === 'plus') {
-    // плюс в круге
-    return (
+  return (
+    <div style={{ position: 'relative', width: 24, height: 24 }}>
       <div
         style={{
-          ...common,
-          borderColor,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color,
-          fontSize: 16,
-          fontWeight: 500,
+          position: 'absolute',
+          left: 2,
+          right: 2,
+          bottom: 3,
+          height: 10,
+          borderRadius: 4,
+          border: `2px solid ${borderColor}`,
+          borderTop: 'none',
+          transition: 'border-color 200ms ease-out',
         }}
-      >
-        +
-      </div>
-    );
-  }
-
-  if (id === 'chat') {
-    // два пузыря
-    return (
-      <div style={{ position: 'relative', width: 24, height: 24 }}>
-        <div
-          style={{
-            position: 'absolute',
-            left: 2,
-            bottom: 4,
-            width: 14,
-            height: 10,
-            borderRadius: 8,
-            border: `2px solid ${borderColor}`,
-          }}
-        />
-        <div
-          style={{
-            position: 'absolute',
-            right: 2,
-            top: 2,
-            width: 14,
-            height: 10,
-            borderRadius: 8,
-            border: `2px solid ${borderColor}`,
-            background: active ? '#ffffff' : 'transparent',
-          }}
-        />
-      </div>
-    );
-  }
-
-  if (id === 'flai') {
-    // молния в круге
-    return (
+      />
       <div
         style={{
-          ...common,
-          borderColor,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color,
-          fontSize: 14,
+          position: 'absolute',
+          left: 4,
+          right: 4,
+          bottom: 11,
+          height: 0,
+          borderLeft: '2px solid transparent',
+          borderRight: '2px solid transparent',
+          borderBottom: `10px solid ${borderColor}`,
+          transition: 'border-bottom-color 200ms ease-out',
         }}
-      >
-        ⚡
-      </div>
-    );
-  }
-
-  return null;
+      />
+    </div>
+  );
 }
 
 export default function BottomNav({ active }) {
@@ -154,8 +72,8 @@ export default function BottomNav({ active }) {
               key={item.id}
               href={item.href}
               style={{
-                width: 44,
-                height: 44,
+                width: 48,
+                height: 48,
                 borderRadius: 999,
                 display: 'flex',
                 alignItems: 'center',
@@ -163,10 +81,24 @@ export default function BottomNav({ active }) {
                 textDecoration: 'none',
                 background: isActive ? '#0f172a' : 'transparent',
                 color: isActive ? '#ffffff' : '#64748b',
-                transition: 'background 0.15s ease',
+                transition:
+                  'background-color 220ms ease-out, transform 180ms ease-out',
+                transform: isActive ? 'scale(1.06)' : 'scale(1)',
+              }}
+              onMouseDown={(e) => {
+                e.currentTarget.style.transform = 'scale(0.95)';
+              }}
+              onMouseUp={(e) => {
+                e.currentTarget.style.transform = 'scale(1.06)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = isActive
+                  ? 'scale(1.06)'
+                  : 'scale(1)';
               }}
             >
-              <Icon id={item.id} active={isActive} />
+              {item.id === 'home' && <IconHome active={isActive} />}
+              {/* сюда потом добавим IconPlus, IconChat, IconFlai */}
             </a>
           );
         })}
