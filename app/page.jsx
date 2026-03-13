@@ -35,7 +35,7 @@ export default function Page() {
         overflow: 'hidden',
       }}
     >
-      {/* Верх (хедер + вкладки + фильтры), закреплён */}
+      {/* Верх: хедер + вкладки + фильтры (закреплён) */}
       <div
         style={{
           position: 'absolute',
@@ -58,12 +58,12 @@ export default function Page() {
         </div>
       </div>
 
-      {/* Скроллящаяся середина с карточками */}
+      {/* Скроллящаяся середина */}
       <section
         style={{
           position: 'absolute',
-          top: 150,      // примерная высота блока выше, можно потом подогнать
-          bottom: 80,    // место под нижнюю навигацию
+          top: 150, // примерная высота верхнего блока
+          bottom: 80, // место под нижнюю навигацию
           left: 0,
           right: 0,
           overflowY: 'auto',
@@ -78,7 +78,7 @@ export default function Page() {
         ))}
       </section>
 
-      {/* Нижняя панель навигации, закреплена */}
+      {/* Нижняя панель навигации (закреплена) */}
       <BottomNav active="home" />
     </div>
   );
