@@ -31,8 +31,6 @@ export default function RootLayout({ children }) {
             boxShadow: '0 18px 40px rgba(15,23,42,0.22)',
             overflow: 'hidden',
             position: 'relative',
-            display: 'flex',
-            flexDirection: 'column',
           }}
         >
           {children}
